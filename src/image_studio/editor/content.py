@@ -10,8 +10,7 @@ from ..core import fx, geometry, render
 from ..core.color import parse_color, u8_to_f
 from ..core.compositor import validate_effect
 from ..core.ids import new_id
-from ..core.layer import BlendMode, Effect, FillProps, Layer, LayerKind, MaskRef, ShapeProps, TextProps
-from ..core.provenance import Provenance
+from ..core.layer import BlendMode, Effect, FillProps, Layer, LayerKind, ShapeProps, TextProps
 from ..errors import NotFoundError, ValidationError
 from .base import EditorBase
 
@@ -289,30 +288,29 @@ class ContentOps(EditorBase):
             self._new_layer(proj, tx, lyr, arr, None)
         return self.result(proj, tx)
 
-    # ----- generative ------------------------------------------------------------------------------
-    def generate_image_layer(self, document_id: str, prompt: str, negative_prompt: str = "",
-                             width: int | None = None, height: int | None = None, seed: int | None = None,
-                             provider: str = "comfyui", steps: int = 25, cfg: float = 6.5,
-                             name: str | None = None, x: int = 0, y: int = 0,
-                             mask_from_selection: bool = False) -> dict[str, Any]:
-        """Generate pixels with an optional local generative provider and add them as a new layer.
-        With mask_from_selection=true the new layer is masked to the current selection (inpaint-style)."""
-        from ..generation import get_generator
+    # ----- painted pixels -------------------------------------------------------------------------
+    def add_pixel_layer(self, document_id: str, rgba: np.ndarray, name: str, x: int = 0, y: int = 0,
+                        opacity: float = 1.0, blend_mode: str = "normal", parent_id: str | None = None,
+                        clipped: bool = False, metadata: dict[str, Any] | None = None,
+                        op: str = "paint_layer", params: dict[str, Any] | None = None) -> dict[str, Any]:
+        """Add pixels painted by the procedural engine (:mod:`image_studio.paint`) as a new raster layer.
+        ``rgba`` is HxWx4 uint8 placed with its top-left at (x, y); fully transparent borders are trimmed."""
+        if rgba.ndim != 3 or rgba.shape[2] != 4 or rgba.dtype != np.uint8:
+            raise ValidationError("internal: painted pixels must be HxWx4 uint8")
+        ys, xs = np.nonzero(rgba[..., 3])
+        if xs.size == 0:
+            raise ValidationError(f"Painted layer '{name}' is fully transparent",
+                                  hint="Check the action's coordinates and parameters (is it inside the canvas?).")
+        x0, x1, y0, y1 = xs.min(), xs.max() + 1, ys.min(), ys.max() + 1
+        arr = np.ascontiguousarray(rgba[y0:y1, x0:x1])
         proj = self.project(document_id)
-        doc = proj.doc
-        gen = get_generator(provider)
-        w, h = width or doc.width, height or doc.height
-        rgba, meta = gen.generate(prompt=prompt, negative_prompt=negative_prompt, width=w, height=h, seed=seed,
-                                  steps=steps, cfg=cfg)
-        with proj.transaction("generate_image_layer", {"prompt": prompt, "provider": provider, "seed": meta.get("seed"),
-                                                       "width": w, "height": h}) as tx:
-            asset = self._add_asset(proj, tx, rgba, None, kind="generated",
-                                    provenance=Provenance(origin="generated", provider=provider, generator=meta))
-            lyr = Layer(id=new_id("gen"), name=name or f"Generated: {prompt[:30]}", x=x, y=y, source_asset=asset.id,
-                        metadata={"prompt": prompt, "negative_prompt": negative_prompt, **meta})
-            self._new_layer(proj, tx, lyr, rgba, None)
-            if mask_from_selection:
-                s = self.doc_mask_to_layer(self.selection_doc(proj, tx.doc), lyr)
-                lyr.mask = MaskRef(blob=proj.blobs.put(np.clip(s * 255 + 0.5, 0, 255).astype(np.uint8)))
-            tx.result.update(asset_id=asset.id, generator=meta)
+        with proj.transaction(op, {"name": name, **(params or {})}) as tx:
+            lyr = Layer(id=new_id("pnt"), name=name, x=int(x + x0), y=int(y + y0), opacity=opacity,
+                        blend_mode=BlendMode(blend_mode), clipped=clipped,
+                        metadata={"generated_by": "image_studio.paint", **(metadata or {})})
+            lyr.pixels = proj.blobs.put(arr)
+            lyr.height, lyr.width = arr.shape[:2]
+            tx.doc.insert(lyr, parent_id=parent_id)
+            tx.touch(lyr.id)
+            tx.result["layer_id"] = lyr.id
         return self.result(proj, tx)

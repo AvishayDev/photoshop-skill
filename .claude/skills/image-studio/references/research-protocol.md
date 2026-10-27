@@ -2,8 +2,9 @@
 
 Research is part of the work, not decoration. Adapt the aspects to the request.
 
-1. **Knowledge first.** `search_knowledge` for each subject/environment/material/light/technique and
-   read relevant entries. Note what is missing or low-confidence.
+1. **Library and knowledge first.** `search_patterns` (figure recipes, textures, palettes, silhouettes,
+   scenes, lights) and `search_knowledge` for each subject/environment/material/light/technique; read
+   the hits. Note what is missing or low-confidence - only research that.
 2. **Decompose into aspects.** Examples for "tiger in a forest at sunrise":
    - Subject: proportions, head/ear/eye shape, stripe layout and variation, fur direction and texture,
      paw placement and posture, silhouette from the chosen camera angle, appearance under low warm
@@ -26,6 +27,16 @@ Research is part of the work, not decoration. Adapt the aspects to the request.
 6. **Translate into a strategy**: an original composition and concrete edit parameters. References
    teach appearance; they are not the artwork. Only composite assets whose license allows it
    (CC0/PD/CC BY/CC BY-SA; check NC for commercial use) and keep attribution.
-7. **Summarize**: `get_research_summary` and cite it in the visual specification.
+7. **Learn patterns (measure, don't guess).** Run `learn_pattern` on the best references: palette,
+   marks (stripes/spots/plain, coverage, elongation), dominant period and direction, light direction, and
+   with `rect` (+ `fg_points` for shadowed limbs) the silhouette contour. Compare the numbers with what you
+   see; discard wrong measurements (e.g. a mask that missed the legs).
+8. **Save what is reusable** with `save_pattern`: `texture/<subject>-<pattern>`, `palette/<subject>`,
+   `silhouette/<subject>-<pose>`, `figure/<subject>-<pose>` (after you built and checked the recipe),
+   `scene/...`, `light/...`. Cite sources (url, title, license) and keep confidence honest.
+9. **Facts from the web.** Use web search/fetch for descriptive facts (markings, proportions, behaviour
+   in light) and cite the pages in pattern/knowledge sources.
+10. **Summarize**: `get_research_summary` and cite it in the visual specification.
 
-If research tools or network are unavailable, say so, rely on the knowledge base, and lower confidence.
+If research tools or network are unavailable (providers can rate-limit), say so, rely on the pattern
+library and knowledge base, and lower confidence.

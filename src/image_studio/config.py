@@ -48,8 +48,6 @@ class Settings:
     user_agent: str = (
         "agent-image-studio/0.1 (https://github.com/avishaydev/photoshop-skill; open-source image toolkit)"
     )
-    comfyui_url: str | None = None
-    comfyui_checkpoint: str | None = None
     openverse_token: str | None = None
 
     @classmethod
@@ -75,8 +73,6 @@ class Settings:
             gimp_timeout=float(os.environ.get("IMAGE_STUDIO_GIMP_TIMEOUT", "180")),
             max_image_pixels=int(os.environ.get("IMAGE_STUDIO_MAX_PIXELS", "120000000")),
             max_revisions=int(os.environ.get("IMAGE_STUDIO_MAX_REVISIONS", "100")),
-            comfyui_url=os.environ.get("IMAGE_STUDIO_COMFYUI_URL") or None,
-            comfyui_checkpoint=os.environ.get("IMAGE_STUDIO_COMFYUI_CHECKPOINT") or None,
             openverse_token=os.environ.get("IMAGE_STUDIO_OPENVERSE_TOKEN") or None,
         )
 

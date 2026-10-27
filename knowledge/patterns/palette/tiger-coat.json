@@ -1,0 +1,91 @@
+{
+ "id": "palette/tiger-coat",
+ "title": "Tiger coat palette (sunlit, painter's choice) + measured shade palette",
+ "kind": "palette",
+ "tags": [
+  "tiger",
+  "orange",
+  "coat",
+  "palette",
+  "fur"
+ ],
+ "aliases": [],
+ "params": {
+  "colors": [
+   "#a9481a",
+   "#d4782c",
+   "#e59a4a"
+  ],
+  "marks": "#160f0b",
+  "belly": "#f6efe3",
+  "eye": "#d9a332",
+  "nose": "#b8706a"
+ },
+ "learned": {
+  "shade_palette_measured": [
+   {
+    "hex": "#191816",
+    "share": 0.174,
+    "luminance": 0.094
+   },
+   {
+    "hex": "#3a352d",
+    "share": 0.155,
+    "luminance": 0.209
+   },
+   {
+    "hex": "#5c5141",
+    "share": 0.17,
+    "luminance": 0.323
+   },
+   {
+    "hex": "#7d6b51",
+    "share": 0.238,
+    "luminance": 0.426
+   },
+   {
+    "hex": "#988365",
+    "share": 0.204,
+    "luminance": 0.523
+   },
+   {
+    "hex": "#b8a382",
+    "share": 0.06,
+    "luminance": 0.647
+   }
+  ]
+ },
+ "sources": [
+  {
+   "url": "https://wordpress.org/photos/photo/519673339c/",
+   "title": "A Bengal tiger walking through a forested area with dense foliage.",
+   "license": "CC0 1.0",
+   "supports": [
+    "stripes",
+    "silhouette",
+    "palette"
+   ]
+  },
+  {
+   "url": "https://animalia.bio/tiger",
+   "title": "Tiger - animalia.bio",
+   "supports": [
+    "coat colours",
+    "stripe orientation",
+    "white underside"
+   ]
+  },
+  {
+   "url": "https://a-z-animals.com/animals/Tiger/",
+   "title": "Tiger - A-Z Animals",
+   "supports": [
+    "ear spots",
+    "tail bands with black tip"
+   ]
+  }
+ ],
+ "confidence": "medium",
+ "notes": "Measured palette comes from a tiger in forest shade (desaturated browns, luminance 0.09-0.65); the params are the sunlit coat used for painting (rust back -> orange flanks -> cream-white belly). In shade, multiply toward #7d6b51.",
+ "used_in": [],
+ "reviewed": "2026-10-27"
+}

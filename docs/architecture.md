@@ -5,7 +5,7 @@
                          │  MCP (stdio, JSON-RPC)
                          ▼
    ┌──────────────── image_studio.mcp_server ────────────────┐
-   │ 94 structured tools · plan gate · structured errors      │
+   │ 101 structured tools · plan gate · structured errors     │
    └───────┬────────────┬──────────────┬─────────────┬────────┘
            ▼            ▼              ▼             ▼
       editor/       research/      knowledge/    workflows/
@@ -17,8 +17,18 @@
         │
         ▼
    backends/  pillow (built-in, always) · gimp (GIMP 3 batch bridge) · photoshop (optional)
-   generation/ optional local providers (ComfyUI)
+
+   paint/      procedural painting engine (brushes, shapes, shading, patterns, scenes, figures,
+               finishing, texture synthesis) - creates pixels from scratch, no generative model
+   patterns/   pattern learning from references + JSON pattern library (knowledge/patterns/)
+   pipeline/   Pipeline (Python API, plan-gated, layered output) + declarative JSON specs
 ```
+
+**Creating images = painting, not generating.** A request is decomposed into a plan, references are
+studied and *measured* (`patterns.learn`), and the agent writes a pipeline of painting actions
+(`paint.*`) that renders each element - sky, water, forest, figure, shadows, reflections, grade - as a
+named layer of a normal project. Learned parameters and subject recipes are stored as JSON in
+`knowledge/patterns/` so the next task starts from them. See [painting.md](painting.md).
 
 ## Key decisions
 
@@ -93,4 +103,7 @@ understanding, action, verification and delivery). Plans are stored in each proj
   `core.capabilities.backends()`.
 - **New research provider**: subclass `research.providers.base.ReferenceProvider` (search/get returning
   `ReferenceCandidate` with `LicenseInfo`) and add it to `ResearchService`.
-- **New generator**: subclass `generation.base.ImageGenerator`, add it to `available_generators()`.
+- **New painting action**: add a builder to `paint/` (return a full-canvas float RGBA layer) and register it
+  in `pipeline/spec.py` `ACTIONS`; it becomes available to `paint_layer` and `run_pipeline`.
+- **New subject**: author a figure spec, render it alone, then save it as `figure/<name>` in the pattern
+  library (`PatternLibrary().save`).

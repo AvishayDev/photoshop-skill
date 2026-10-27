@@ -23,21 +23,24 @@ from .session import Session
 log = logging.getLogger("image_studio.mcp")
 
 INSTRUCTIONS = """\
-Agent Image Studio: layer-based image creation and editing (GIMP-backed, Photoshop-like).
+Agent Image Studio: create images from scratch by painting (no generative AI) and edit images with
+Photoshop-like layer tools.
 
 Mandatory workflow for EVERY image creation or editing request:
 1. Call get_capabilities once per session to learn what this installation can do.
 2. Show the user a numbered plan of >= 10 meaningful steps adapted to the request
    (draft_plan can suggest one), then register it with submit_plan. Mutating tools
    refuse to run without an active plan.
-3. search_knowledge before researching; research references (search_references,
-   fetch_reference, view the images, record_observation) when real-world appearance matters.
-4. Edit non-destructively: keep originals locked, use separate named layers, masks,
-   adjustment layers and checkpoints.
-5. After each significant stage: render_preview, LOOK at the image (view_image or open the
+3. search_patterns and search_knowledge BEFORE researching: reuse what was learned before.
+4. Research what is missing (search_references, fetch_reference, LOOK at the images), measure it
+   with learn_pattern (palette, stripes/spots, silhouette) and save_pattern the useful results.
+5. Create: paint layers (list_paint_actions, paint_layer, run_pipeline - or write a Python pipeline with
+   image_studio.pipeline.Pipeline) - environment, subject figure, light, shadows, reflections, grade.
+   Edit: non-destructive layers, masks, adjustment layers and checkpoints.
+6. After each significant stage: render_preview, LOOK at the image (view_image or open the
    file), run inspect_image / analyze_layer_integration, and correct defects.
-6. Deliver: save_document (native .xcf/.ora when possible), export, verify, report paths,
-   limitations and attribution; complete_plan; save_knowledge for reusable lessons.
+7. Deliver: save_document (native .xcf/.ora when possible), export, verify, report paths,
+   limitations and attribution; complete_plan; save_knowledge / save_pattern for reusable lessons.
 Coordinates are document pixels, origin top-left, y down. Layer ids are stable.
 """
 

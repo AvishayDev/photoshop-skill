@@ -301,7 +301,7 @@ class RetouchOps(EditorBase):
             tx.result["region_fraction"] = round(frac, 4)
             if frac > 0.08:
                 tx.warnings.append("Large region: inpainting may smear. Inspect the preview; refine with "
-                                   "clone_stamp/heal_region or a generative inpainting provider.")
+                                   "clone_stamp/heal_region or synthesize_texture.")
         return self.result(proj, tx)
 
     def remove_background(self, document_id: str, layer_id: str, method: str = "grabcut",

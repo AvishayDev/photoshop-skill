@@ -34,7 +34,7 @@ OPERATIONS: dict[str, dict[str, Any]] = {
     "clone_stamp": {"engine": "pillow", "native": ["gimp"]},
     "heal": {"engine": "pillow (Poisson clone / inpaint)", "native": ["gimp"]},
     "remove_object": {"engine": "pillow (OpenCV inpainting)", "native": [],
-                      "note": "Good for small/medium distractions on textured backgrounds; large objects need clone/heal or a generative inpainting provider"},
+                      "note": "Good for small/medium distractions on textured backgrounds; large areas need clone/heal or synthesize_texture"},
     "remove_background": {"engine": "pillow (GrabCut / color key)", "native": [],
                           "note": "Optional 'rembg' method if the rembg package is installed"},
     "text_shapes_fills_procedural": {"engine": "core (Pillow)", "native": []},
@@ -44,7 +44,14 @@ OPERATIONS: dict[str, dict[str, Any]] = {
     "native_project_psd_export": {"engine": "photoshop", "native": ["photoshop"]},
     "open_psd": {"engine": "gimp", "native": ["gimp"]},
     "export_png_jpeg_webp_tiff": {"engine": "core", "native": []},
-    "generative_image": {"engine": "optional provider (ComfyUI)", "native": []},
+    "procedural_painting": {"engine": "core (image_studio.paint)", "native": [],
+                            "note": "Creates images from scratch: sky, clouds, ocean, forest, grass, figures "
+                                    "(subjects from pattern-library recipes), patterns, light, shadows, "
+                                    "reflections. No generative model is used."},
+    "pattern_learning_library": {"engine": "core (image_studio.patterns)", "native": [],
+                                 "note": "learn_pattern measures palettes, stripes/spots, silhouettes on "
+                                         "references; search/save_pattern persist them in knowledge/patterns"},
+    "texture_synthesis": {"engine": "core (patch quilting)", "native": []},
     "reference_research": {"engine": "providers: wikimedia_commons, openverse, local", "native": []},
 }
 
@@ -71,8 +78,9 @@ def capability_report(check_gimp_filters: bool = False) -> dict[str, Any]:
         out["gimp_gegl_operations"] = bs["gimp"].filters()
     out["limitations"] = [
         "Color: 8-bit sRGB RGB(A) documents only; CMYK and 16/32-bit are converted to 8-bit sRGB on import.",
-        "Photorealistic synthesis of brand-new complex subjects needs a configured generative provider "
-        "(e.g. local ComfyUI). Compositing tools alone cannot invent arbitrary realistic objects.",
+        "New subjects are PAINTED procedurally (figure recipes + learned patterns + lighting): results are "
+        "painterly/illustrative realism, not photographs. Close-up photorealistic faces/anatomy are beyond "
+        "the engine; say so and offer a wider framing or compositing a licensed photo instead.",
         "OpenRaster export bakes masks into alpha; XCF export (GIMP) keeps masks; adjustment layers and "
         "effects are baked into separate raster layers in native exports.",
     ]

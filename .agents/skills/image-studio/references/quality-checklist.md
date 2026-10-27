@@ -26,3 +26,13 @@ text spelled correctly?
 **Composition**: clear focal point, horizon level, nothing important cut off at edges.
 
 Prioritize by visual impact: wrong light/scale > edges/halos > colour mismatch > grain/sharpness > polish.
+
+## Painted images (pipelines)
+
+- Subject reads at first glance (silhouette, key markings) and its scale fits the environment.
+- One light direction everywhere: figure shading, rim, cast shadow, foliage, rays, sun position.
+- Feet/base grounded: contact shadow + occluder (grass, water surface) + shadow or reflection.
+- No sticker edge: soft fur/feather edges, haze over distant parts, no bright halo from the rim light.
+- No tiling, banding or regular repetition in ground, water, foliage.
+- Atmospheric depth: far elements paler and lower contrast than near ones.
+- Grade did not introduce colour blotches or clipped shadows; compare the pre-grade preview.
