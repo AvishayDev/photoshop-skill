@@ -1,0 +1,65 @@
+{
+ "id": "texture/peacock-eyespot",
+ "title": "Peacock train eyespot (ocellus)",
+ "kind": "texture",
+ "tags": [
+  "peacock",
+  "eyespot",
+  "ocellus",
+  "feather",
+  "iridescent",
+  "pattern"
+ ],
+ "aliases": [],
+ "params": {
+  "type": "eyespot",
+  "colors": [
+   "#0b1640",
+   "#1b4fa0",
+   "#23a08a",
+   "#c49a2a",
+   "#6f8a2a"
+  ],
+  "rings": [
+   0.32,
+   0.5,
+   0.68,
+   0.84,
+   1.0
+  ],
+  "squash": 1.25,
+  "offset": 0.12,
+  "radius_rel_height": 0.034
+ },
+ "learned": {},
+ "sources": [
+  {
+   "url": "https://nationalzoo.si.edu/animals/common-peafowl",
+   "title": "Common peafowl - Smithsonian's National Zoo",
+   "supports": [
+    "train length ~1.7 m",
+    "100-175 ocelli"
+   ]
+  },
+  {
+   "url": "https://www.birdfact.com/birds/indian-peafowl",
+   "title": "Indian Peafowl - Birdfact",
+   "supports": [
+    "train = elongated upper tail coverts",
+    "eyespots ringed blue and bronze"
+   ]
+  },
+  {
+   "url": "https://www.denverzoo.org/wp-content/uploads/2018/09/Indian-Peafowl.pdf",
+   "title": "Indian Peafowl fact sheet - Denver Zoo",
+   "supports": [
+    "train 1.4-1.6 m",
+    "100-150 feathers"
+   ]
+  }
+ ],
+ "confidence": "medium",
+ "notes": "Inner to outer: dark navy heart, cobalt blue, turquoise/green ring, bronze-gold ring, olive fringe; inner rings sit slightly toward the feather base; the spot is taller than wide. Used by paint.patterns.eyespot and the 'feathers' figure part.",
+ "used_in": [],
+ "reviewed": "2026-10-27"
+}

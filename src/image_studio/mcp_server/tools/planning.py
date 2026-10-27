@@ -14,9 +14,12 @@ def register(tool, session) -> None:
         """Report which backends are installed (built-in raster engine, GIMP 3, Photoshop), which operations
         are available and their known limitations. Call this before planning so the plan never relies on an
         unavailable operation. include_gimp_filters lists GEGL operations (starts GIMP, ~5-15 s)."""
-        from ...generation import available_generators
+        from ...patterns import PatternLibrary
+        from ...pipeline.spec import ACTIONS
         rep = capability_report(check_gimp_filters=include_gimp_filters)
-        rep["generators"] = {n: g.status() for n, g in available_generators().items()}
+        rep["painting"] = {"actions": sorted(ACTIONS), "pattern_library": len(PatternLibrary().all()),
+                           "note": "Images are created by painting (no generative model). Write Python pipelines "
+                                   "with image_studio.pipeline.Pipeline or use paint_layer / run_pipeline."}
         rep["research_providers"] = session.research.list_providers()
         rep["plan_gate"] = session.plan_state()
         return {"ok": True, **rep}

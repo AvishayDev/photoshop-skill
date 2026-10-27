@@ -123,14 +123,3 @@ def register(tool, session) -> None:
         (edge light on layer_id from light_azimuth, clipped). Adjust intensity/opacity to taste."""
         return ed.add_lighting_effect(document_id, kind, x, y, color, intensity, radius, angle, softness,
                                       blend_mode, layer_id, light_azimuth, width, rays_length, threshold)
-
-    @tool(mutating=True, open_world=True, title="Generate image layer")
-    def generate_image_layer(document_id: DocId, prompt: str, negative_prompt: str = "", width: int | None = None,
-                             height: int | None = None, seed: int | None = None, provider: str = "comfyui",
-                             steps: int = 25, cfg: float = 6.5, name: str | None = None, x: int = 0, y: int = 0,
-                             mask_from_selection: bool = False) -> dict[str, Any]:
-        """Generate pixels with an OPTIONAL local generative provider (ComfyUI) into a new layer with full
-        provenance (model, seed). Fails with a clear message if no provider is configured; then fall back to
-        compositing licensed assets and procedural layers, and tell the user about the limitation."""
-        return ed.generate_image_layer(document_id, prompt, negative_prompt, width, height, seed, provider, steps,
-                                       cfg, name, x, y, mask_from_selection)

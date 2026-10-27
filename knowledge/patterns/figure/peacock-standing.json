@@ -1,0 +1,561 @@
+{
+ "id": "figure/peacock-standing",
+ "title": "Peacock (male Indian peafowl) standing, train closed (figure recipe)",
+ "kind": "figure",
+ "tags": [
+  "peacock",
+  "peafowl",
+  "bird",
+  "figure",
+  "standing",
+  "side view",
+  "train",
+  "subject"
+ ],
+ "aliases": [
+  "pavo cristatus",
+  "peafowl"
+ ],
+ "params": {
+  "title": "Indian peafowl (male), standing, side view, train closed and trailing (facing left)",
+  "aspect": 3.0,
+  "materials": {
+   "neck": {
+    "colors": [
+     "#123f8f",
+     "#1f62c4",
+     "#0f3a7a"
+    ],
+    "variation": 0.08,
+    "pattern": {
+     "type": "scales",
+     "size": 0.018,
+     "strength": 0.2,
+     "relief": 0.2,
+     "color": "#0a2456"
+    }
+   },
+   "back": {
+    "colors": [
+     "#3d6b2c",
+     "#5e7f2a",
+     "#4a5f22"
+    ],
+    "variation": 0.1,
+    "pattern": {
+     "type": "scales",
+     "size": 0.03,
+     "strength": 0.5,
+     "relief": 0.35,
+     "color": "#1d3016"
+    }
+   },
+   "wing": {
+    "colors": [
+     "#b9a27a",
+     "#9c8460",
+     "#7a6448"
+    ],
+    "variation": 0.08,
+    "pattern": {
+     "type": "stripes",
+     "period": 0.03,
+     "thickness": 0.35,
+     "warp": 0.15,
+     "breakup": 0.1,
+     "taper": 0.3,
+     "fork": 0.0,
+     "color": "#2e241a"
+    }
+   },
+   "primaries": {
+    "colors": [
+     "#9a4f22",
+     "#b5642c"
+    ]
+   },
+   "leg": {
+    "colors": [
+     "#7d7468",
+     "#5e574d"
+    ]
+   },
+   "head": {
+    "colors": [
+     "#1a52b0",
+     "#1f62c4"
+    ]
+   },
+   "train": {
+    "barb_colors": [
+     "#4f6b1e",
+     "#6f7d26",
+     "#3f5a1f",
+     "#8a8a33"
+    ],
+    "shaft_color": "#c9b98a",
+    "eye_colors": [
+     "#0b1640",
+     "#1b4fa0",
+     "#23a08a",
+     "#c49a2a",
+     "#6f8a2a"
+    ],
+    "eye_radius": 0.034
+   }
+  },
+  "parts": [
+   {
+    "name": "train",
+    "shape": "feathers",
+    "material": "train",
+    "base": [
+     0.92,
+     0.52
+    ],
+    "tip_path": [
+     [
+      1.25,
+      0.6
+     ],
+     [
+      1.7,
+      0.78
+     ],
+     [
+      2.3,
+      0.92
+     ],
+     [
+      2.95,
+      0.985
+     ]
+    ],
+    "count": 110,
+    "width": 0.055,
+    "spread": 0.03
+   },
+   {
+    "name": "far leg",
+    "shape": "limb",
+    "material": "leg",
+    "shade_factor": 0.7,
+    "points": [
+     [
+      0.74,
+      0.66
+     ],
+     [
+      0.76,
+      0.83
+     ],
+     [
+      0.74,
+      0.985
+     ]
+    ],
+    "radii": [
+     0.03,
+     0.015,
+     0.013
+    ]
+   },
+   {
+    "name": "primaries",
+    "shape": "ellipse",
+    "material": "primaries",
+    "center": [
+     0.93,
+     0.55
+    ],
+    "radii": [
+     0.14,
+     0.065
+    ],
+    "angle": 12
+   },
+   {
+    "name": "body",
+    "shape": "ellipse",
+    "material": "back",
+    "center": [
+     0.74,
+     0.53
+    ],
+    "radii": [
+     0.24,
+     0.15
+    ],
+    "angle": 12
+   },
+   {
+    "name": "wing",
+    "shape": "polygon",
+    "material": "wing",
+    "smooth": true,
+    "thickness": 0.08,
+    "axis": [
+     [
+      0.68,
+      0.5
+     ],
+     [
+      0.95,
+      0.5
+     ]
+    ],
+    "points": [
+     [
+      0.64,
+      0.46
+     ],
+     [
+      0.8,
+      0.44
+     ],
+     [
+      0.97,
+      0.49
+     ],
+     [
+      1.0,
+      0.55
+     ],
+     [
+      0.86,
+      0.6
+     ],
+     [
+      0.68,
+      0.6
+     ]
+    ]
+   },
+   {
+    "name": "breast",
+    "shape": "ellipse",
+    "material": "neck",
+    "center": [
+     0.6,
+     0.53
+    ],
+    "radii": [
+     0.115,
+     0.125
+    ],
+    "angle": 20
+   },
+   {
+    "name": "neck",
+    "shape": "limb",
+    "material": "neck",
+    "points": [
+     [
+      0.58,
+      0.48
+     ],
+     [
+      0.52,
+      0.33
+     ],
+     [
+      0.49,
+      0.2
+     ]
+    ],
+    "radii": [
+     0.09,
+     0.055,
+     0.04
+    ],
+    "emerge": 0.25
+   },
+   {
+    "name": "head",
+    "shape": "ellipse",
+    "material": "head",
+    "center": [
+     0.47,
+     0.165
+    ],
+    "radii": [
+     0.05,
+     0.038
+    ],
+    "angle": -8
+   },
+   {
+    "name": "near leg",
+    "shape": "limb",
+    "material": "leg",
+    "emerge": 0.25,
+    "points": [
+     [
+      0.66,
+      0.65
+     ],
+     [
+      0.64,
+      0.83
+     ],
+     [
+      0.62,
+      0.985
+     ]
+    ],
+    "radii": [
+     0.034,
+     0.016,
+     0.014
+    ]
+   }
+  ],
+  "details": [
+   {
+    "type": "polygon",
+    "points": [
+     [
+      0.435,
+      0.155
+     ],
+     [
+      0.38,
+      0.175
+     ],
+     [
+      0.435,
+      0.187
+     ]
+    ],
+    "color": "#c8b8a0",
+    "smooth": false
+   },
+   {
+    "type": "stroke",
+    "points": [
+     [
+      0.435,
+      0.149
+     ],
+     [
+      0.5,
+      0.147
+     ]
+    ],
+    "color": "#f4f1ea",
+    "size": 0.009,
+    "size_end": 0.004
+   },
+   {
+    "type": "stroke",
+    "points": [
+     [
+      0.445,
+      0.183
+     ],
+     [
+      0.495,
+      0.185
+     ]
+    ],
+    "color": "#f4f1ea",
+    "size": 0.008,
+    "size_end": 0.003
+   },
+   {
+    "type": "eye",
+    "center": [
+     0.457,
+     0.165
+    ],
+    "radius": 0.008,
+    "iris": "#3a2a18",
+    "squash": 0.9
+   },
+   {
+    "type": "stroke",
+    "points": [
+     [
+      0.4725,
+      0.1375
+     ],
+     [
+      0.4425,
+      0.04000000000000001
+     ]
+    ],
+    "color": "#3b5a3a",
+    "size": 0.004,
+    "extend_alpha": true
+   },
+   {
+    "type": "stroke",
+    "points": [
+     [
+      0.48,
+      0.1375
+     ],
+     [
+      0.4725,
+      0.0325
+     ]
+    ],
+    "color": "#3b5a3a",
+    "size": 0.004,
+    "extend_alpha": true
+   },
+   {
+    "type": "stroke",
+    "points": [
+     [
+      0.4875,
+      0.1405
+     ],
+     [
+      0.5025,
+      0.037000000000000005
+     ]
+    ],
+    "color": "#3b5a3a",
+    "size": 0.004,
+    "extend_alpha": true
+   },
+   {
+    "type": "stroke",
+    "points": [
+     [
+      0.495,
+      0.14500000000000002
+     ],
+     [
+      0.5325,
+      0.047500000000000014
+     ]
+    ],
+    "color": "#3b5a3a",
+    "size": 0.004,
+    "extend_alpha": true
+   },
+   {
+    "type": "stroke",
+    "points": [
+     [
+      0.46499999999999997,
+      0.1405
+     ],
+     [
+      0.42000000000000004,
+      0.047500000000000014
+     ]
+    ],
+    "color": "#3b5a3a",
+    "size": 0.004,
+    "extend_alpha": true
+   },
+   {
+    "type": "ellipse",
+    "center": [
+     0.4425,
+     0.04000000000000001
+    ],
+    "radii": [
+     0.010400000000000001,
+     0.0143
+    ],
+    "color": "#1d4fb0",
+    "extend_alpha": true
+   },
+   {
+    "type": "ellipse",
+    "center": [
+     0.4725,
+     0.0325
+    ],
+    "radii": [
+     0.010400000000000001,
+     0.0143
+    ],
+    "color": "#1d4fb0",
+    "extend_alpha": true
+   },
+   {
+    "type": "ellipse",
+    "center": [
+     0.5025,
+     0.037000000000000005
+    ],
+    "radii": [
+     0.010400000000000001,
+     0.0143
+    ],
+    "color": "#1d4fb0",
+    "extend_alpha": true
+   },
+   {
+    "type": "ellipse",
+    "center": [
+     0.5325,
+     0.047500000000000014
+    ],
+    "radii": [
+     0.010400000000000001,
+     0.0143
+    ],
+    "color": "#1d4fb0",
+    "extend_alpha": true
+   },
+   {
+    "type": "ellipse",
+    "center": [
+     0.42000000000000004,
+     0.047500000000000014
+    ],
+    "radii": [
+     0.010400000000000001,
+     0.0143
+    ],
+    "color": "#1d4fb0",
+    "extend_alpha": true
+   }
+  ],
+  "lighting": {
+   "wrap": 0.3,
+   "rim": 0.2,
+   "specular": 0.15,
+   "depth": 0.15,
+   "occlusion": 0.2,
+   "part_relief": 0.4
+  }
+ },
+ "learned": {},
+ "sources": [
+  {
+   "url": "https://nationalzoo.si.edu/animals/common-peafowl",
+   "title": "Common peafowl - Smithsonian's National Zoo",
+   "supports": [
+    "train length ~1.7 m",
+    "100-175 ocelli"
+   ]
+  },
+  {
+   "url": "https://www.birdfact.com/birds/indian-peafowl",
+   "title": "Indian Peafowl - Birdfact",
+   "supports": [
+    "train = elongated upper tail coverts",
+    "eyespots ringed blue and bronze"
+   ]
+  },
+  {
+   "url": "https://www.denverzoo.org/wp-content/uploads/2018/09/Indian-Peafowl.pdf",
+   "title": "Indian Peafowl fact sheet - Denver Zoo",
+   "supports": [
+    "train 1.4-1.6 m",
+    "100-150 feathers"
+   ]
+  }
+ ],
+ "confidence": "medium",
+ "notes": "Iridescent blue neck/breast (scale texture), green-bronze back, barred buff wing coverts, chestnut primaries, crest of bare shafts with blue tips, white stripes above and below the eye. Train = ~110 coverts from the rump, tips spread along a trailing path to the ground; longer feathers drawn first so shorter feathers' eyespots form staggered rows. Train length about 2.3x the bird's standing height. Authored facing left.",
+ "used_in": [],
+ "reviewed": "2026-10-27"
+}

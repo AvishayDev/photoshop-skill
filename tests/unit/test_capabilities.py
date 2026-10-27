@@ -11,7 +11,9 @@ def test_report_structure():
     assert rep["backends"]["pillow"]["available"] is True
     assert set(rep["backends"]) == {"pillow", "gimp", "photoshop"}
     assert rep["operations"]["filters"]["available"]
-    assert any("generative" in s.lower() or "generative" in s for s in rep["limitations"])
+    assert any("painted procedurally" in s.lower() for s in rep["limitations"])
+    assert rep["operations"]["procedural_painting"]["available"]
+    assert "generative_image" not in rep["operations"]
 
 
 def test_gimp_missing_is_reported(settings, monkeypatch):

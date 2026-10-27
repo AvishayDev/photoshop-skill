@@ -1,0 +1,858 @@
+{
+ "id": "figure/tiger-walking",
+ "title": "Tiger walking, side view (figure recipe)",
+ "kind": "figure",
+ "tags": [
+  "tiger",
+  "big cat",
+  "figure",
+  "walking",
+  "side view",
+  "subject",
+  "bengal"
+ ],
+ "aliases": [
+  "panthera tigris"
+ ],
+ "params": {
+  "title": "Tiger, side view, walking (facing left)",
+  "aspect": 2.45,
+  "materials": {
+   "coat": {
+    "colors": [
+     "#a9481a",
+     "#d4782c",
+     "#e59a4a"
+    ],
+    "belly": "#f6efe3",
+    "belly_from": 0.95,
+    "variation": 0.07,
+    "pattern": {
+     "ref": "texture/tiger-stripes",
+     "fade_below": 0.75
+    },
+    "fur": {
+     "length": 0.022,
+     "density": 0.11,
+     "lightness": 0.14,
+     "edge_hairs": 0.5
+    }
+   },
+   "leg": {
+    "colors": [
+     "#c46a26",
+     "#d98a3e",
+     "#e8c9a0"
+    ],
+    "variation": 0.06,
+    "pattern": {
+     "type": "stripes",
+     "period": 0.07,
+     "thickness": 0.3,
+     "warp": 0.25,
+     "breakup": 0.45,
+     "taper": 0.7,
+     "color": "#1a120c"
+    },
+    "fur": {
+     "length": 0.016,
+     "density": 0.1,
+     "lightness": 0.12
+    }
+   },
+   "face": {
+    "colors": [
+     "#b9581f",
+     "#dd8a3c",
+     "#ecc79a"
+    ],
+    "variation": 0.05,
+    "pattern": {
+     "type": "stripes",
+     "period": 0.05,
+     "thickness": 0.3,
+     "warp": 0.3,
+     "breakup": 0.5,
+     "taper": 0.8,
+     "color": "#1a120c"
+    },
+    "fur": {
+     "length": 0.014,
+     "density": 0.1,
+     "lightness": 0.1
+    }
+   },
+   "white": {
+    "colors": [
+     "#fbf7ef",
+     "#efe6d6"
+    ],
+    "fur": {
+     "length": 0.014,
+     "density": 0.1,
+     "lightness": 0.08
+    }
+   },
+   "tail": {
+    "colors": [
+     "#c8661f",
+     "#dc8a3d"
+    ],
+    "gradient": "across",
+    "pattern": {
+     "type": "stripes",
+     "period": 0.09,
+     "thickness": 0.42,
+     "warp": 0.1,
+     "breakup": 0.0,
+     "taper": 0.2,
+     "fork": 0.0,
+     "color": "#150e0a"
+    },
+    "fur": {
+     "length": 0.014,
+     "density": 0.1
+    }
+   },
+   "dark": {
+    "colors": [
+     "#171009"
+    ]
+   },
+   "ear": {
+    "colors": [
+     "#2a1a10",
+     "#5a3a22"
+    ],
+    "fur": {
+     "length": 0.01,
+     "density": 0.08
+    }
+   }
+  },
+  "parts": [
+   {
+    "name": "far hind leg",
+    "shape": "limb",
+    "material": "leg",
+    "emerge": 0.3,
+    "shade_factor": 0.72,
+    "points": [
+     [
+      1.5,
+      0.42
+     ],
+     [
+      1.44,
+      0.62
+     ],
+     [
+      1.6,
+      0.8
+     ],
+     [
+      1.56,
+      0.975
+     ]
+    ],
+    "radii": [
+     0.15,
+     0.09,
+     0.06,
+     0.055
+    ]
+   },
+   {
+    "name": "far front leg",
+    "shape": "limb",
+    "material": "leg",
+    "emerge": 0.25,
+    "shade_factor": 0.72,
+    "points": [
+     [
+      0.8,
+      0.5
+     ],
+     [
+      0.86,
+      0.74
+     ],
+     [
+      0.9,
+      0.975
+     ]
+    ],
+    "radii": [
+     0.14,
+     0.085,
+     0.075
+    ]
+   },
+   {
+    "name": "far hind paw",
+    "shape": "ellipse",
+    "material": "leg",
+    "center": [
+     1.53,
+     0.965
+    ],
+    "radii": [
+     0.09,
+     0.04
+    ],
+    "shade_factor": 0.72,
+    "pattern": false
+   },
+   {
+    "name": "far front paw",
+    "shape": "ellipse",
+    "material": "leg",
+    "center": [
+     0.87,
+     0.965
+    ],
+    "radii": [
+     0.09,
+     0.04
+    ],
+    "shade_factor": 0.72,
+    "pattern": false
+   },
+   {
+    "name": "tail",
+    "shape": "limb",
+    "material": "tail",
+    "points": [
+     [
+      1.88,
+      0.24
+     ],
+     [
+      2.07,
+      0.3
+     ],
+     [
+      2.22,
+      0.5
+     ],
+     [
+      2.33,
+      0.66
+     ],
+     [
+      2.38,
+      0.74
+     ]
+    ],
+    "radii": [
+     0.055,
+     0.047,
+     0.043,
+     0.042,
+     0.04
+    ]
+   },
+   {
+    "name": "torso",
+    "shape": "polygon",
+    "material": "coat",
+    "smooth": true,
+    "thickness": 0.24,
+    "axis": [
+     [
+      0.45,
+      0.36
+     ],
+     [
+      1.9,
+      0.36
+     ]
+    ],
+    "points": [
+     [
+      0.42,
+      0.24
+     ],
+     [
+      0.62,
+      0.13
+     ],
+     [
+      0.85,
+      0.12
+     ],
+     [
+      1.15,
+      0.16
+     ],
+     [
+      1.45,
+      0.15
+     ],
+     [
+      1.72,
+      0.13
+     ],
+     [
+      1.88,
+      0.2
+     ],
+     [
+      1.95,
+      0.36
+     ],
+     [
+      1.88,
+      0.52
+     ],
+     [
+      1.7,
+      0.6
+     ],
+     [
+      1.5,
+      0.56
+     ],
+     [
+      1.2,
+      0.6
+     ],
+     [
+      0.9,
+      0.66
+     ],
+     [
+      0.66,
+      0.7
+     ],
+     [
+      0.48,
+      0.62
+     ],
+     [
+      0.38,
+      0.45
+     ]
+    ]
+   },
+   {
+    "name": "chest ruff",
+    "shape": "ellipse",
+    "material": "white",
+    "center": [
+     0.5,
+     0.5
+    ],
+    "radii": [
+     0.13,
+     0.15
+    ],
+    "angle": 20
+   },
+   {
+    "name": "neck",
+    "shape": "ellipse",
+    "material": "coat",
+    "center": [
+     0.47,
+     0.34
+    ],
+    "radii": [
+     0.21,
+     0.16
+    ],
+    "angle": -28,
+    "axis": [
+     [
+      0.35,
+      0.3
+     ],
+     [
+      0.65,
+      0.3
+     ]
+    ],
+    "belly": 0.6
+   },
+   {
+    "name": "near hind leg",
+    "shape": "limb",
+    "material": "leg",
+    "emerge": 0.45,
+    "points": [
+     [
+      1.68,
+      0.36
+     ],
+     [
+      1.62,
+      0.62
+     ],
+     [
+      1.79,
+      0.8
+     ],
+     [
+      1.76,
+      0.975
+     ]
+    ],
+    "radii": [
+     0.2,
+     0.11,
+     0.07,
+     0.064
+    ],
+    "center": [
+     0.31,
+     0.155
+    ]
+   },
+   {
+    "name": "near front leg",
+    "shape": "limb",
+    "material": "leg",
+    "emerge": 0.35,
+    "points": [
+     [
+      0.66,
+      0.45
+     ],
+     [
+      0.61,
+      0.74
+     ],
+     [
+      0.57,
+      0.975
+     ]
+    ],
+    "radii": [
+     0.17,
+     0.095,
+     0.08
+    ],
+    "center": [
+     0.375,
+     0.165
+    ]
+   },
+   {
+    "name": "near hind paw",
+    "shape": "ellipse",
+    "material": "leg",
+    "center": [
+     1.73,
+     0.965
+    ],
+    "radii": [
+     0.095,
+     0.042
+    ],
+    "pattern": false
+   },
+   {
+    "name": "near front paw",
+    "shape": "ellipse",
+    "material": "leg",
+    "center": [
+     0.53,
+     0.965
+    ],
+    "radii": [
+     0.095,
+     0.042
+    ],
+    "pattern": false
+   },
+   {
+    "name": "far ear",
+    "shape": "ellipse",
+    "material": "ear",
+    "center": [
+     0.3,
+     0.115
+    ],
+    "radii": [
+     0.04,
+     0.042
+    ],
+    "angle": -20
+   },
+   {
+    "name": "near ear",
+    "shape": "ellipse",
+    "material": "ear",
+    "center": [
+     0.365,
+     0.125
+    ],
+    "radii": [
+     0.046,
+     0.048
+    ],
+    "angle": -30
+   },
+   {
+    "name": "head",
+    "shape": "polygon",
+    "material": "face",
+    "smooth": true,
+    "thickness": 0.17,
+    "axis": [
+     [
+      0.2326,
+      0.0984
+     ],
+     [
+      0.2326,
+      0.5132
+     ]
+    ],
+    "points": [
+     [
+      0.2692,
+      0.1106
+     ],
+     [
+      0.4034,
+      0.1472
+     ],
+     [
+      0.4888,
+      0.2692
+     ],
+     [
+      0.4766,
+      0.44
+     ],
+     [
+      0.3546,
+      0.5498
+     ],
+     [
+      0.1594,
+      0.562
+     ],
+     [
+      0.0374,
+      0.501
+     ],
+     [
+      -0.0236,
+      0.3912
+     ],
+     [
+      -0.0175,
+      0.3058
+     ],
+     [
+      0.0374,
+      0.2082
+     ],
+     [
+      0.135,
+      0.135
+     ]
+    ]
+   },
+   {
+    "name": "cheek ruff",
+    "shape": "polygon",
+    "material": "white",
+    "smooth": true,
+    "pattern": false,
+    "points": [
+     [
+      0.318,
+      0.379
+     ],
+     [
+      0.4766,
+      0.3546
+     ],
+     [
+      0.5132,
+      0.4766
+     ],
+     [
+      0.379,
+      0.5864
+     ],
+     [
+      0.2204,
+      0.5742
+     ],
+     [
+      0.2326,
+      0.4644
+     ]
+    ]
+   },
+   {
+    "name": "muzzle",
+    "shape": "ellipse",
+    "material": "white",
+    "center": [
+     0.0618,
+     0.4278
+    ],
+    "radii": [
+     0.0915,
+     0.06709999999999999
+    ],
+    "angle": 8
+   }
+  ],
+  "details": [
+   {
+    "type": "ellipse",
+    "center": [
+     0.37,
+     0.118
+    ],
+    "radii": [
+     0.017,
+     0.019
+    ],
+    "color": "#f2ede4"
+   },
+   {
+    "type": "ellipse",
+    "center": [
+     0.1472,
+     0.2265
+    ],
+    "radii": [
+     0.0488,
+     0.0244
+    ],
+    "angle": -10,
+    "color": "#f1e8da",
+    "opacity": 0.5
+   },
+   {
+    "type": "eye",
+    "center": [
+     0.135,
+     0.2692
+    ],
+    "radius": 0.0244,
+    "iris": "#d9a332",
+    "angle": -12,
+    "squash": 0.7
+   },
+   {
+    "type": "stroke",
+    "points": [
+     [
+      0.1533,
+      0.2814
+     ],
+     [
+      0.196,
+      0.3302
+     ],
+     [
+      0.2143,
+      0.3912
+     ]
+    ],
+    "color": "#1a120c",
+    "size": 0.00976,
+    "size_end": 0.00366
+   },
+   {
+    "type": "polygon",
+    "points": [
+     [
+      -0.0236,
+      0.3546
+     ],
+     [
+      0.0252,
+      0.3485
+     ],
+     [
+      0.0313,
+      0.379
+     ],
+     [
+      -0.0053,
+      0.3973
+     ],
+     [
+      -0.026,
+      0.379
+     ]
+    ],
+    "color": "#b8706a"
+   },
+   {
+    "type": "stroke",
+    "points": [
+     [
+      0.0008,
+      0.3973
+     ],
+     [
+      0.0069,
+      0.44
+     ],
+     [
+      0.0252,
+      0.4644
+     ],
+     [
+      0.0862,
+      0.4705
+     ]
+    ],
+    "color": "#2a1a12",
+    "size": 0.00732
+   },
+   {
+    "type": "stroke",
+    "points": [
+     [
+      0.0252,
+      0.4278
+     ],
+     [
+      -0.0724,
+      0.4034
+     ]
+    ],
+    "color": "#f4efe6",
+    "size": 0.00366,
+    "opacity": 0.8,
+    "extend_alpha": true
+   },
+   {
+    "type": "stroke",
+    "points": [
+     [
+      0.0374,
+      0.44
+     ],
+     [
+      -0.0968,
+      0.4522
+     ]
+    ],
+    "color": "#f4efe6",
+    "size": 0.00366,
+    "opacity": 0.8,
+    "extend_alpha": true
+   },
+   {
+    "type": "stroke",
+    "points": [
+     [
+      0.0374,
+      0.4522
+     ],
+     [
+      -0.0602,
+      0.501
+     ]
+    ],
+    "color": "#f4efe6",
+    "size": 0.00366,
+    "opacity": 0.7,
+    "extend_alpha": true
+   },
+   {
+    "type": "stroke",
+    "points": [
+     [
+      0.2814,
+      0.3424
+     ],
+     [
+      0.3424,
+      0.4156
+     ],
+     [
+      0.3424,
+      0.4888
+     ]
+    ],
+    "color": "#1a120c",
+    "size": 0.01464,
+    "size_end": 0.00366
+   },
+   {
+    "type": "stroke",
+    "points": [
+     [
+      0.2326,
+      0.3912
+     ],
+     [
+      0.2814,
+      0.4644
+     ]
+    ],
+    "color": "#1a120c",
+    "size": 0.010979999999999998,
+    "size_end": 0.00244
+   },
+   {
+    "type": "stroke",
+    "points": [
+     [
+      2.31,
+      0.64
+     ],
+     [
+      2.38,
+      0.745
+     ]
+    ],
+    "color": "#120c08",
+    "size": 0.08,
+    "size_end": 0.06
+   }
+  ],
+  "lighting": {
+   "wrap": 0.45,
+   "rim": 0.12,
+   "depth": 0.22,
+   "occlusion": 0.25
+  }
+ },
+ "learned": {},
+ "sources": [
+  {
+   "url": "https://animalia.bio/tiger",
+   "title": "Tiger - animalia.bio",
+   "supports": [
+    "coat colours",
+    "stripe orientation",
+    "white underside"
+   ]
+  },
+  {
+   "url": "https://a-z-animals.com/animals/Tiger/",
+   "title": "Tiger - A-Z Animals",
+   "supports": [
+    "ear spots",
+    "tail bands with black tip"
+   ]
+  },
+  {
+   "url": "https://wordpress.org/photos/photo/519673339c/",
+   "title": "A Bengal tiger walking through a forested area (CC0)",
+   "license": "CC0 1.0",
+   "supports": [
+    "proportions",
+    "gait"
+   ]
+  }
+ ],
+ "confidence": "medium",
+ "notes": "Hand-built from references: torso contour with deep chest and belly tuck, limbs that emerge from the body (stride: near fore leg forward, near hind leg back), tail with rings + black tip, white muzzle/cheek ruff/chest, white ear spots, amber eye. Coat stripes come from texture/tiger-stripes (measured). Authored facing left; render with facing='right' to mirror. Stylized-painterly realism: reads as a tiger at small/medium size; close-ups expose the simplified head.",
+ "used_in": [],
+ "reviewed": "2026-10-27"
+}

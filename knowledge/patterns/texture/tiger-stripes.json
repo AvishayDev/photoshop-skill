@@ -1,0 +1,80 @@
+{
+ "id": "texture/tiger-stripes",
+ "title": "Tiger stripes (Bengal tiger, measured)",
+ "kind": "texture",
+ "tags": [
+  "tiger",
+  "stripes",
+  "big cat",
+  "fur",
+  "markings",
+  "bengal"
+ ],
+ "aliases": [
+  "panthera tigris"
+ ],
+ "params": {
+  "type": "stripes",
+  "period": 0.1,
+  "thickness": 0.4,
+  "warp": 0.35,
+  "breakup": 0.32,
+  "taper": 0.7,
+  "fork": 0.3,
+  "color": "#160f0b"
+ },
+ "learned": {
+  "marks": {
+   "type": "stripes",
+   "coverage": 0.376,
+   "count": 51,
+   "median_elongation": 3.65,
+   "median_width_px": 7.06,
+   "threshold_luminance": 0.322
+  },
+  "period": {
+   "period_px": 44.94,
+   "across_angle_deg": 137.7,
+   "peak_to_mean": 297.77
+  },
+  "orientation": {
+   "gradient_angle_deg": 155.8,
+   "edge_direction_deg": 65.8,
+   "coherence": 0.457
+  },
+  "subject_height_px": 407.0
+ },
+ "sources": [
+  {
+   "url": "https://wordpress.org/photos/photo/519673339c/",
+   "title": "A Bengal tiger walking through a forested area with dense foliage.",
+   "license": "CC0 1.0",
+   "supports": [
+    "stripes",
+    "silhouette",
+    "palette"
+   ]
+  },
+  {
+   "url": "https://animalia.bio/tiger",
+   "title": "Tiger - animalia.bio",
+   "supports": [
+    "coat colours",
+    "stripe orientation",
+    "white underside"
+   ]
+  },
+  {
+   "url": "https://a-z-animals.com/animals/Tiger/",
+   "title": "Tiger - A-Z Animals",
+   "supports": [
+    "ear spots",
+    "tail bands with black tip"
+   ]
+  }
+ ],
+ "confidence": "medium",
+ "notes": "Measured on a side-view walking Bengal tiger: dark marks cover ~38% of the coat, stripe period ~0.11 of the body height (shoulder-to-ground), stripes ~3.7x longer than wide, mostly vertical on the torso; limbs and forehead carry horizontal bands, tail has thick rings and a black tip. period/thickness are in figure units (fractions of figure height). Pattern params feed paint.patterns.stripes via a figure material.",
+ "used_in": [],
+ "reviewed": "2026-10-27"
+}

@@ -239,8 +239,8 @@ SPECS: dict[str, AdjustmentSpec] = {
         "hue": Param(0.0, -180, 180), "saturation": Param(0.0, -1, 1), "lightness": Param(0.0, -1, 1),
         "colorize": Param(False, kind="bool")}),
     "color_balance": AdjustmentSpec("color_balance", color_balance, {
-        "shadows": Param([0, 0, 0], kind="triplet"), "midtones": Param([0, 0, 0], kind="triplet"),
-        "highlights": Param([0, 0, 0], kind="triplet"), "preserve_luminosity": Param(True, kind="bool")}),
+        "shadows": Param([0, 0, 0], -1, 1, kind="triplet"), "midtones": Param([0, 0, 0], -1, 1, kind="triplet"),
+        "highlights": Param([0, 0, 0], -1, 1, kind="triplet"), "preserve_luminosity": Param(True, kind="bool")}),
     "exposure": AdjustmentSpec("exposure", exposure, {
         "ev": Param(0.0, -10, 10), "offset": Param(0.0, -0.5, 0.5), "gamma": Param(1.0, 0.1, 10)}),
     "vibrance": AdjustmentSpec("vibrance", vibrance, {"amount": Param(0.0, -1, 1)}),
@@ -288,6 +288,8 @@ def validate_params(name: str, params: dict[str, Any] | None) -> dict[str, Any]:
             if not (isinstance(v, (list, tuple)) and len(v) == 3):
                 raise ValidationError(f"{name}.{key} must be a list of 3 numbers")
             v = [float(x) for x in v]
+            if (p.lo is not None and min(v) < p.lo) or (p.hi is not None and max(v) > p.hi):
+                raise ValidationError(f"{name}.{key}={v}: each value must be within [{p.lo}, {p.hi}]")
         elif p.kind == "points" and v is not None:
             if not (isinstance(v, list) and len(v) >= 2 and all(isinstance(q, (list, tuple)) and len(q) == 2 for q in v)):
                 raise ValidationError(f"{name}.{key} must be a list of at least two [input, output] pairs (0..255)")

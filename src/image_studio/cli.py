@@ -22,7 +22,6 @@ def _print(data: Any) -> None:
 
 def cmd_doctor(args) -> int:
     from .core.capabilities import capability_report
-    from .generation import available_generators
     from .knowledge.storage import KnowledgeStore
     from .knowledge.validation import validate_entry
 
@@ -54,9 +53,9 @@ def cmd_doctor(args) -> int:
         check(f"backend {name}", status, detail.strip())
     if args.gimp_filters and "gimp_gegl_operations" in rep:
         check("GIMP GEGL operations", "ok", str(len(rep["gimp_gegl_operations"])))
-    for name, g in available_generators().items():
-        st = g.status()
-        check(f"generator {name} (optional)", "ok" if st["available"] else "info", st["detail"])
+    from .patterns import PatternLibrary
+    pats = PatternLibrary().all()
+    check("pattern library", "ok" if pats else "warn", f"{len(pats)} learned/authored patterns")
     try:
         s.workspace.mkdir(parents=True, exist_ok=True)
         probe = s.workspace / ".write_test"
@@ -309,10 +308,55 @@ def build_parser() -> argparse.ArgumentParser:
     r.add_argument("--reusable-only", action="store_true")
     r.set_defaults(func=cmd_research)
 
+    pp = sub.add_parser("pipeline", help="Painting pipelines (declarative JSON specs)")
+    psub = pp.add_subparsers(dest="pipeline_cmd", required=True)
+    pr = psub.add_parser("run", help="Run a pipeline spec .json (Python pipelines: run them with python)")
+    pr.add_argument("spec")
+    psub.add_parser("actions", help="List painting actions and parameters")
+    pp.set_defaults(func=cmd_pipeline)
+
+    pt = sub.add_parser("patterns", help="Pattern library (learned visual patterns)")
+    ptsub = pt.add_subparsers(dest="patterns_cmd", required=True)
+    pts = ptsub.add_parser("search")
+    pts.add_argument("query")
+    pts.add_argument("--kind")
+    ptsub.add_parser("list")
+    ptl = ptsub.add_parser("learn", help="Learn patterns from a local image file")
+    ptl.add_argument("image")
+    ptl.add_argument("--name", required=True)
+    ptl.add_argument("--rect", nargs=4, type=int, metavar=("X", "Y", "W", "H"))
+    pt.set_defaults(func=cmd_patterns)
+
     pl = sub.add_parser("plan", help="Draft a >=10-step plan for a request")
     pl.add_argument("request")
     pl.set_defaults(func=cmd_plan)
     return p
+
+
+def cmd_pipeline(args) -> int:
+    from .pipeline.spec import describe_actions, run_spec
+
+    if args.pipeline_cmd == "actions":
+        _print(describe_actions())
+        return 0
+    spec = json.loads(Path(args.spec).read_text(encoding="utf-8"))
+    _print(run_spec(spec, verbose=True))
+    return 0
+
+
+def cmd_patterns(args) -> int:
+    from .patterns import PatternLibrary, learn_from_image
+
+    lib = PatternLibrary()
+    if args.patterns_cmd == "search":
+        _print(lib.search(args.query, args.kind))
+    elif args.patterns_cmd == "list":
+        _print([e.summary() for e in lib.all()])
+    else:
+        from .editor.base import load_rgba
+        rgba, _ = load_rgba(Path(args.image))
+        _print(learn_from_image(rgba, rect=args.rect, name=args.name))
+    return 0
 
 
 def main(argv: list[str] | None = None) -> int:

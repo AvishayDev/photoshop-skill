@@ -13,6 +13,7 @@ genuinely reusable lessons afterwards (`save_knowledge`). Git history is the mem
 | `materials/` | Surface behaviour: fur, feathers, water, skin, metal... |
 | `lighting/` | Light sources, shadows, reflections, atmosphere |
 | `techniques/` | Editing procedures and tool recipes for this toolkit |
+| `patterns/` | **Pattern library** (JSON): figure recipes, measured textures, palettes, silhouettes, scene and light setups consumed by the painting engine - see [docs/painting.md](../docs/painting.md) |
 
 ## Entry format
 

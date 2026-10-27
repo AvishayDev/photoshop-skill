@@ -976,27 +976,119 @@ soft_light) | god_rays (crepuscular rays from x,y through bright gaps, e.g. sun 
 | `rays_length` | number | 0.35 |
 | `threshold` | number | 0.65 |
 
-### `generate_image_layer` (mutating)
+## Painting from scratch & pattern learning
 
-Generate pixels with an OPTIONAL local generative provider (ComfyUI) into a new layer with full
-provenance (model, seed). Fails with a clear message if no provider is configured; then fall back to
-compositing licensed assets and procedural layers, and tell the user about the limitation.
+### `list_paint_actions`
+
+Painting actions available to paint_layer and run_pipeline (sky, clouds, sun, mountains, ground,
+ocean, forest, foliage, grass, light_rays, haze, dapples, figure, pattern, strokes, shape, cast_shadow,
+contact_shadow, reflection, rim_light, adjust, vignette, grain, wash) with their parameters. These
+paint pixels from scratch - no photo and no generative model is needed.
+
+### `paint_layer` (mutating)
+
+Paint one action (see list_paint_actions) into an existing document as new named layer(s).
+Subject-relative actions (cast_shadow, contact_shadow, reflection, rim_light, pattern with
+mask_layer) refer to other layers BY NAME, e.g. params={"of": "Tiger", "azimuth": 150, ...}.
+Example: action='figure', params={'spec': 'figure/tiger-walking', 'height': 330, 'x': 470,
+'ground_y': 880, 'facing': 'left', 'light_azimuth': 150}.
 
 | parameter | type | default |
 | --- | --- | --- |
 | `document_id` | string | required |
-| `prompt` | string | required |
-| `negative_prompt` | string | "" |
-| `width` | integer or null | null |
-| `height` | integer or null | null |
-| `seed` | integer or null | null |
-| `provider` | string | "comfyui" |
-| `steps` | integer | 25 |
-| `cfg` | number | 6.5 |
+| `action` | string | required |
+| `params` | object or null | null |
 | `name` | string or null | null |
+| `group` | string or null | null |
+| `blend_mode` | string | "normal" |
+| `opacity` | number | 1.0 |
+| `seed` | integer | 0 |
+
+### `run_pipeline` (mutating)
+
+Build a whole image from a declarative pipeline: creates a new layered project, runs every step
+(tagged with its plan step), renders the requested previews, exports PNG/JPEG + layered ORA and
+writes pipeline.json. Returns paths of exports and previews - view them and iterate. For complex
+scenes prefer writing a Python pipeline (image_studio.pipeline.Pipeline) and running it.
+
+| parameter | type | default |
+| --- | --- | --- |
+| `spec` | object | required |
+
+### `learn_pattern`
+
+Measure reusable patterns on a fetched reference: palette, dark-mark analysis (stripes/spots/
+plain, coverage, elongation), dominant period and direction, texture orientation, light direction and,
+when ``rect`` (around the subject) or fg_points is given, the subject's silhouette contour (GrabCut).
+Returns suggested pattern-library entries - review them (look at the reference!) and save_pattern the
+good ones so future tasks don't need to learn them again. Results are also written to research/.
+
+| parameter | type | default |
+| --- | --- | --- |
+| `document_id` | string | required |
+| `reference_id` | string | required |
+| `name` | string | required |
+| `rect` | array<number> or null | null |
+| `fg_points` | array<array<number>> or null | null |
+| `bg_points` | array<array<number>> or null | null |
+
+### `search_patterns`
+
+Search learned/authored patterns (kinds: figure, texture, palette, silhouette, scene, light). Do this
+BEFORE researching: a hit means the subject or material was already studied.
+
+| parameter | type | default |
+| --- | --- | --- |
+| `query` | string | required |
+| `kind` | string or null | null |
+| `limit` | integer | 10 |
+
+### `get_pattern`
+
+Full pattern entry (params usable by paint actions, measurements, sources, notes).
+
+| parameter | type | default |
+| --- | --- | --- |
+| `pattern_id` | string | required |
+
+### `save_pattern`
+
+Save a reusable pattern (a figure recipe, measured texture, palette, silhouette, scene or light
+setup) to knowledge/patterns/. Cite sources (url, title, license); 'high' confidence needs sources.
+Tell the user to commit the file so it persists for everyone who clones the repository.
+
+| parameter | type | default |
+| --- | --- | --- |
+| `pattern_id` | string | required |
+| `title` | string | required |
+| `params` | object | required |
+| `tags` | array<string> or null | null |
+| `sources` | array<object> or null | null |
+| `confidence` | string | "medium" |
+| `notes` | string | "" |
+| `learned` | object or null | null |
+| `overwrite` | boolean | false |
+
+### `synthesize_texture` (mutating)
+
+Grow a new, non-repeating texture (bark, fur, sand, water, foliage...) from a region ``rect`` of a
+reference by stamping and seam-cutting patches - the automated clone stamp. The output is a new layer
+of size width x height at (x, y). Because it reuses the reference's pixels, the license must allow
+derivatives (CC0/PD/CC BY/CC BY-SA); attribution is recorded.
+
+| parameter | type | default |
+| --- | --- | --- |
+| `document_id` | string | required |
+| `reference_id` | string | required |
+| `rect` | array<number> | required |
+| `width` | integer | required |
+| `height` | integer | required |
 | `x` | integer | 0 |
 | `y` | integer | 0 |
-| `mask_from_selection` | boolean | false |
+| `patch` | integer | 48 |
+| `name` | string or null | null |
+| `seed` | integer | 0 |
+| `license_acknowledged` | boolean | false |
 
 ## Preview, inspection & output
 

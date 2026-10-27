@@ -4,7 +4,7 @@
 
 - Python 3.10+ (tested with 3.13)
 - Optional: **GIMP 3.x** for native filters, clone/heal tools and `.xcf` files
-- Optional: a local **ComfyUI** for generative layers; a licensed **Photoshop** for `.psd` export
+- Optional: a licensed **Photoshop** for `.psd` export
 
 Everything else (Pillow, NumPy, OpenCV, the MCP SDK) installs from PyPI. No paid API or account is
 needed.
@@ -63,8 +63,6 @@ Verify: `image-studio doctor --gimp-filters`.
 | `IMAGE_STUDIO_GIMP_TIMEOUT` | `180` | seconds per GIMP job |
 | `IMAGE_STUDIO_MAX_PIXELS` | `120000000` | decompression-bomb and canvas limit |
 | `IMAGE_STUDIO_MAX_REVISIONS` | `100` | undo revisions kept (checkpointed revisions are always kept) |
-| `IMAGE_STUDIO_COMFYUI_URL` | – | e.g. `http://127.0.0.1:8188` (local/private addresses only) |
-| `IMAGE_STUDIO_COMFYUI_CHECKPOINT` | first installed | checkpoint file name |
 | `IMAGE_STUDIO_OPENVERSE_TOKEN` | – | optional Openverse OAuth token for higher rate limits |
 
 ## Platform notes

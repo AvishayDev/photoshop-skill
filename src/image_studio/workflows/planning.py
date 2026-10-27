@@ -158,21 +158,21 @@ def draft_plan(request: str, context: dict[str, Any] | None = None) -> dict[str,
     body: list[str]
     if kind == "scene_creation":
         body = [
-            f"Search the knowledge base for existing notes on the subjects and environment in '{s}'",
-            "Research reference images for the main subject's anatomy, proportions, silhouette and surface "
-            "texture, recording sources and licenses",
-            "Research the environment's structure, materials, depth layering and typical lighting, plus how the "
-            "subject interacts with it (contact, occlusion, reflections, shadows)",
-            "Write a visual specification: camera angle, composition and focal point, palette, key light "
-            "direction and color temperature, depth of field",
-            "Choose the creation method per element (procedural layers, licensed assets, local generative "
-            "provider) and state limitations honestly if photorealism is not achievable",
-            "Create a checkpoint, then build background, midground and atmosphere as separate named layers",
-            "Add the main subject on its own layer with a clean mask, scaled and positioned for the chosen "
-            "perspective",
-            "Integrate the subject: match color and contrast, add contact and cast shadows, reflections or rim "
-            "light consistent with the key light",
-            "Apply global finishing on adjustment layers: color grade, atmospheric haze, depth blur and grain",
+            f"Search the pattern library (search_patterns) and knowledge base for the subjects and environment "
+            f"in '{s}' and reuse what was already learned",
+            "Search reference images of the main subject and study its borders: silhouette, proportions and "
+            "pose from several angles, recording sources and licenses",
+            "Understand the subject's patterns (markings, texture, palette) and measure them with learn_pattern",
+            "Understand how the subject looks under different light directions: highlights, rims, form shadows",
+            "Search reference images of the environment and understand its patterns: structure, depth layers, "
+            "materials, objects found in it and typical lighting",
+            "Understand how light, shadow and reflection work where the subject meets the environment",
+            "Save the newly learned patterns (save_pattern) and write the visual specification: camera, "
+            "composition, palette, key light azimuth/elevation and colour",
+            "Paint the environment from the learned patterns as separate named layers, back to front",
+            "Generate the subject from a figure recipe and learned patterns, lit by the scene's key light",
+            "Set the subject in the scene and blend its lighting, shadows and reflections into the environment",
+            "Apply final touches on adjustment layers: colour grade, atmospheric haze, vignette and grain",
         ]
     elif kind == "background_replacement":
         body = [
