@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "image-studio": {
+      "command": "image-studio",
+      "args": ["serve"],
+      "env": {}
+    }
+  }
+}

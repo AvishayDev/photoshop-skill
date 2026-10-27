@@ -1,0 +1,71 @@
+{
+ "batchcomplete": true,
+ "query": {
+  "pages": [
+   {
+    "pageid": 3625607,
+    "ns": 6,
+    "title": "File:Panthera tigris altaica 13 - Buffalo Zoo.jpg",
+    "index": 1,
+    "imageinfo": [
+     {
+      "size": 1047292,
+      "width": 3222,
+      "height": 2184,
+      "thumburl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Panthera_tigris_altaica_13_-_Buffalo_Zoo.jpg/640px-Panthera_tigris_altaica_13_-_Buffalo_Zoo.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Panthera_tigris_altaica_13_-_Buffalo_Zoo.jpg",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:Panthera_tigris_altaica_13_-_Buffalo_Zoo.jpg",
+      "mime": "image/jpeg",
+      "extmetadata": {
+       "ImageDescription": {
+        "value": "Amur tiger (<i><a href=\"//commons.wikimedia.org/wiki/Panthera_tigris_altaica\">Panthera tigris altaica</a></i>) at the Buffalo Zoo."
+       },
+       "Credit": {
+        "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>"
+       },
+       "Artist": {
+        "value": "<a href=\"//commons.wikimedia.org/wiki/User:Davepape\">Dave Pape</a>"
+       },
+       "LicenseShortName": {
+        "value": "Public domain"
+       },
+       "AttributionRequired": {
+        "value": "false"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "pageid": 111,
+    "ns": 6,
+    "title": "File:Tiger in forest.jpg",
+    "index": 2,
+    "imageinfo": [
+     {
+      "width": 1200,
+      "height": 800,
+      "thumburl": "https://upload.wikimedia.org/thumb/t.jpg",
+      "url": "https://upload.wikimedia.org/t.jpg",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:Tiger_in_forest.jpg",
+      "mime": "image/jpeg",
+      "extmetadata": {
+       "LicenseShortName": {
+        "value": "CC BY-SA 4.0"
+       },
+       "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by-sa/4.0"
+       },
+       "Artist": {
+        "value": "Jane Example"
+       },
+       "AttributionRequired": {
+        "value": "true"
+       }
+      }
+     }
+    ]
+   }
+  ]
+ }
+}
