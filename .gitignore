@@ -1,0 +1,33 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+dist/
+build/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.env
+.env.*
+*.log
+
+# Working projects are user data: they hold blobs, previews and exports.
+projects/*
+!projects/README.md
+# Research cache (downloaded thumbnails). Never commit third-party images by default.
+.image_studio_cache/
+
+# Never commit images, layered/editable project files or exports (see docs/asset-policy.md)
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.gif
+*.tif
+*.tiff
+*.bmp
+*.xcf
+*.ora
+*.psd
+*.kra

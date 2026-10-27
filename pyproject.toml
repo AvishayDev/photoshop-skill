@@ -1,0 +1,61 @@
+[build-system]
+requires = ["hatchling>=1.24"]
+build-backend = "hatchling.build"
+
+[project]
+name = "agent-image-studio"
+version = "0.1.0"
+description = "Open-source, layer-based image editing and creation toolkit for AI coding agents (MCP server + agent skills), with a GIMP native backend."
+readme = "README.md"
+license = "Apache-2.0"
+requires-python = ">=3.10"
+authors = [{ name = "Agent Image Studio contributors" }]
+keywords = ["mcp", "gimp", "image-editing", "agents", "claude-code", "codex", "compositing"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: Apache Software License",
+  "Topic :: Multimedia :: Graphics :: Editors :: Raster-Based",
+]
+dependencies = [
+  "mcp>=1.10",
+  "pillow>=10.0",
+  "numpy>=1.26",
+  "opencv-python-headless>=4.8",
+  "pydantic>=2.5",
+  "pyyaml>=6.0",
+  "requests>=2.31",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.5"]
+rembg = ["rembg>=2.0.50", "onnxruntime>=1.16"]
+psd = ["psd-tools>=1.9"]
+photoshop-windows = ["pywin32>=306; sys_platform == 'win32'"]
+
+[project.scripts]
+image-studio = "image_studio.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/avishaydev/photoshop-skill"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/image_studio"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+  "gimp: requires a GIMP 3.x installation (skipped otherwise)",
+  "network: performs live network requests (opt-in via IMAGE_STUDIO_LIVE_TESTS=1)",
+]
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"
+src = ["src"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+ignore = ["E501", "B008", "B905"]
+
+[tool.ruff.lint.per-file-ignores]
+"src/image_studio/backends/gimp/bridge/gimp_bridge.py" = ["UP031"]  # runs inside GIMP; kept dependency-free and simple

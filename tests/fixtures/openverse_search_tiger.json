@@ -1,0 +1,47 @@
+{
+ "result_count": 2,
+ "page_count": 1,
+ "page_size": 2,
+ "page": 1,
+ "results": [
+  {
+   "id": "6a5e25cf-54ae-453f-8441-374aa3c0a61e",
+   "title": "tiger",
+   "foreign_landing_url": "https://www.flickr.com/photos/91501748@N07/27065384106",
+   "url": "https://live.staticflickr.com/7344/27065384106_2b5116dbbc_b.jpg",
+   "creator": "Mathias Appel",
+   "license": "cc0",
+   "license_version": "1.0",
+   "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "provider": "flickr",
+   "source": "flickr",
+   "filetype": null,
+   "tags": [
+    {
+     "name": "tiger"
+    }
+   ],
+   "attribution": "\"tiger\" by Mathias Appel is marked with CC0 1.0.",
+   "height": 678,
+   "width": 1024,
+   "thumbnail": "https://api.openverse.org/v1/images/6a5e25cf-54ae-453f-8441-374aa3c0a61e/thumb/"
+  },
+  {
+   "id": "0b9e2d64-1111-2222-3333-444455556666",
+   "title": "Bengal tiger",
+   "foreign_landing_url": "https://example.org/x",
+   "url": "https://example.org/x.jpg",
+   "creator": "Someone",
+   "license": "by-nd",
+   "license_version": "2.0",
+   "license_url": "https://creativecommons.org/licenses/by-nd/2.0/",
+   "provider": "flickr",
+   "source": "flickr",
+   "tags": [],
+   "attribution": "...",
+   "height": 500,
+   "width": 800,
+   "thumbnail": "https://api.openverse.org/v1/images/0b9e/thumb/"
+  }
+ ]
+}
